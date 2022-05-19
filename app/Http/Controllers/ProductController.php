@@ -44,5 +44,5 @@ class ProductController extends Controller
        $result= $product->delete();
         $message=$result?:'Silinemedi';
         return response()->json(['message'=>$message], 200);
-        }
+     }
     }
