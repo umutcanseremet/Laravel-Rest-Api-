@@ -15,59 +15,34 @@ class ProductController extends Controller
 
     public function show($id)
     {
-        $data = Product::find($id);
-        if (!$data) {
-        return response()->json([
-        'message' => 'Kayıt Bulunumadı !'
-        ], 404);
-
-        }
-
-        {
-            return $data;
-        }
+        $data = Product::findorfail($id);
+        return $data;
         }
 
     public function store( ProductPostRequest  $request)
     {
 
         $validated = $request->validated();
-        $product = Product::create($validated);
-        return response()->json($product, 201);
+        $result=$product = Product::create($validated);
+        $message=$result?$product:'Ürün Kaydedildi';
+        return response()->json(['message'=>$message],200);
     }
 
     public function update(ProductPostRequest $request, $id)
     {
         $data = $request->validated();
         $product = Product::findorfail($id);
-        if (!$product) {
-        return response()->json([
-        'message' => 'Kayıt Bulunamadı!'
 
-        ], 404);
-    }
-        {
-            $product->update($data);
-            return response()->json($product, 200);
-        }
+        $result= $product->update($data);
+        $message=$result?$product:'Güncellendi';
+        return response()->json(['message'=>$message], 200);
     }
 
     public function destroy($id)
     {
-        $product = Product::findorfail($id);
-
-        if (!$product) {
-
-        return response()->json([
-        'message' => 'Kayıt Bulunumadı !'
-        ], 404);
+        $product = Product::findOrFail($id);
+       $result= $product->delete();
+        $message= $result?$product:'Silinemedi';
+        return response()->json(['message'=>$message], 200);
         }
-
-        {
-        $product->delete();
-        return response()->json([
-        'message' => 'Kayıt Silindi!'
-        ], 200);
-        }
-    }
 }
