@@ -17,7 +17,7 @@ class ProductController extends Controller
     {
         $data = Product::findorfail($id);
         return $data;
-        }
+    }
 
     public function store( ProductPostRequest  $request)
     {
@@ -45,4 +45,4 @@ class ProductController extends Controller
         $message= $result?$product:'Silinemedi';
         return response()->json(['message'=>$message], 200);
         }
-}
+    }
