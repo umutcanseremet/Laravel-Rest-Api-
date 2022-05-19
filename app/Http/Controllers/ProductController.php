@@ -24,7 +24,7 @@ class ProductController extends Controller
 
         $validated = $request->validated();
         $result=$product = Product::create($validated);
-        $message=$result?$product:'Ürün Kaydedildi';
+        $message=$result?$product:'Ürün Kaydedilemedi';
         return response()->json(['message'=>$message],200);
     }
 
@@ -34,7 +34,7 @@ class ProductController extends Controller
         $product = Product::findorfail($id);
 
         $result= $product->update($data);
-        $message=$result?$product:'Güncellendi';
+        $message=$result?$product:'Güncellenemedi';
         return response()->json(['message'=>$message], 200);
     }
 
