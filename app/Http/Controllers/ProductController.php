@@ -26,7 +26,7 @@ class ProductController extends Controller
         {
             return $data;
         }
-    }
+        }
 
     public function store( ProductPostRequest  $request)
     {
@@ -39,7 +39,7 @@ class ProductController extends Controller
     public function update(ProductPostRequest $request, $id)
     {
         $data = $request->validated();
-        $product = Product::find($id);
+        $product = Product::findorfail($id);
         if (!$product) {
         return response()->json([
         'message' => 'Kayıt Bulunamadı !'
