@@ -24,7 +24,7 @@ class ProductController extends Controller
 
         $validated = $request->validated();
         $result=$product = Product::create($validated);
-        $message=$result?$product:'Ürün Kaydedilemedi';
+        $message=$product?:'Ürün Kaydedilemedi';
         return response()->json(['message'=>$message],200);
     }
 
@@ -34,7 +34,7 @@ class ProductController extends Controller
         $product = Product::findorfail($id);
 
         $result= $product->update($data);
-        $message=$result?$product:'Güncellenemedi';
+        $message=$product?:'Güncellenemedi';
         return response()->json(['message'=>$message], 200);
     }
 
@@ -42,7 +42,7 @@ class ProductController extends Controller
     {
         $product = Product::findOrFail($id);
        $result= $product->delete();
-        $message= $result?$product:'Silinemedi';
+        $message=$product?:'Silinemedi';
         return response()->json(['message'=>$message], 200);
         }
     }
