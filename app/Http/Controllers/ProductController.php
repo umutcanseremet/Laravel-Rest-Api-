@@ -54,7 +54,7 @@ class ProductController extends Controller
 
     public function destroy($id)
     {
-        $product = Product::find($id);
+        $product = Product::findorfail($id);
 
         if (!$product) {
 
