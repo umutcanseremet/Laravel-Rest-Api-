@@ -42,7 +42,7 @@ class ProductController extends Controller
         $product = Product::findorfail($id);
         if (!$product) {
         return response()->json([
-        'message' => 'Kayıt Bulunamadı !'
+        'message' => 'Kayıt Bulunamadı!'
 
         ], 404);
     }
