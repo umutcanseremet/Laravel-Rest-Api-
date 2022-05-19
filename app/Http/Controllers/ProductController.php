@@ -10,17 +10,18 @@ class ProductController extends Controller
 {
     public function index()
     {
-        return Product::all();
+       return Product::all();
     }
 
     public function show($id)
     {
         $data = Product::find($id);
         if (!$data) {
-            return response()->json([
-                'message' => 'Kayıt Bulunumadı !'
-            ], 404);
+        return response()->json([
+        'message' => 'Kayıt Bulunumadı !'
+        ], 404);
         }
+
         {
             return $data;
         }
@@ -39,10 +40,11 @@ class ProductController extends Controller
         $data = $request->validated();
         $product = Product::find($id);
         if (!$product) {
-            return response()->json([
-                'message' => 'Kayıt Bulunamadı !'
-            ], 404);
-        }
+        return response()->json([
+        'message' => 'Kayıt Bulunamadı !'
+
+        ], 404);
+    }
         {
             $product->update($data);
             return response()->json($product, 200);
@@ -52,16 +54,19 @@ class ProductController extends Controller
     public function destroy($id)
     {
         $product = Product::find($id);
+
         if (!$product) {
-            return response()->json([
-                'message' => 'Kayıt Bulunumadı !'
-            ], 404);
+
+        return response()->json([
+        'message' => 'Kayıt Bulunumadı !'
+        ], 404);
         }
+
         {
-            $product->delete();
-            return response()->json([
-                'message' => 'Kayıt Silindi!'
-            ], 200);
+        $product->delete();
+        return response()->json([
+        'message' => 'Kayıt Silindi!'
+        ], 200);
         }
     }
 }
