@@ -20,7 +20,8 @@ class ProductController extends Controller
             return response()->json([
                 'message' => 'Kayıt Bulunumadı !'
             ], 404);
-        } else {
+        }
+        {
             return $data;
         }
     }
@@ -41,7 +42,8 @@ class ProductController extends Controller
             return response()->json([
                 'message' => 'Kayıt Bulunamadı !'
             ], 404);
-        } else {
+        }
+        {
             $product->update($data);
             return response()->json($product, 200);
         }
@@ -54,7 +56,8 @@ class ProductController extends Controller
             return response()->json([
                 'message' => 'Kayıt Bulunumadı !'
             ], 404);
-        } else {
+        }
+        {
             $product->delete();
             return response()->json([
                 'message' => 'Kayıt Silindi!'
