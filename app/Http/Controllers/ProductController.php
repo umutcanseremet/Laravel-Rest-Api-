@@ -20,7 +20,7 @@ class ProductController extends Controller
         return response()->json([
         'message' => 'Kayıt Bulunumadı !'
         ], 404);
-        //denemeee
+
         }
 
         {
